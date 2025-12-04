@@ -1,0 +1,66 @@
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --navbar-bg: #222;
+    --navbar-text: #9d9d9d;
+    --navbar-active: #fff;
+    --table-border: #ddd;
+    --table-stripe: #f9f9f9;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --navbar-bg: #0a0a0a;
+    --navbar-text: #b0b0b0;
+    --navbar-active: #fff;
+    --table-border: #444;
+    --table-stripe: #2a2a2a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-inverse {
+    background-color: var(--navbar-bg);
+    border-color: var(--navbar-bg);
+}
+
+.table-bordered {
+    border-color: var(--table-border);
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+    border-color: var(--table-border);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: var(--table-stripe);
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(even) {
+    background-color: var(--bg-color);
+}
+
+.dark-mode-toggle {
+    background: none;
+    border: 1px solid var(--navbar-active);
+    color: var(--navbar-active);
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 8px 15px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
