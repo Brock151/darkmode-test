@@ -1,5 +1,5 @@
 (function() {
-    const currentTheme = localStorage.getItem('darkMode') || 'light';
+    const currentTheme = getDarkMode();
     
     if (currentTheme === 'dark') {
         document.body.classList.add('dark-mode');
@@ -9,13 +9,21 @@
         addToggleButton();
     });
     
+    function getDarkMode() {
+        return window.darkModePreference || 'light';
+    }
+    
+    function setDarkMode(theme) {
+        window.darkModePreference = theme;
+    }
+    
     function addToggleButton() {
         const navbar = document.querySelector('.navbar-nav');
         if (!navbar) return;
         
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'dark-mode-toggle';
-        toggleBtn.innerHTML = localStorage.getItem('darkMode') === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        toggleBtn.innerHTML = getDarkMode() === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
         toggleBtn.onclick = toggleDarkMode;
         
         navbar.parentElement.appendChild(toggleBtn);
@@ -24,7 +32,7 @@
     function toggleDarkMode() {
         const isDark = document.body.classList.toggle('dark-mode');
         const theme = isDark ? 'dark' : 'light';
-        localStorage.setItem('darkMode', theme);
+        setDarkMode(theme);
         
         const btn = document.querySelector('.dark-mode-toggle');
         if (btn) {
